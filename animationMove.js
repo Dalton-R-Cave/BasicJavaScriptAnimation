@@ -11,7 +11,8 @@ function move(){
     var x2 = 0;
     var y2 = 390;
     var id = setInterval(frame, 10);
-    var currentColorCode = '#00008b';
+    var touching = false;
+    
     function frame(){
         if (x == 350 && forward == 1){
             forward = 0;
@@ -52,7 +53,13 @@ function move(){
         }
 
         if (((x2 > x) && (x2 < (x + 50))) && ((y2 > y) && (y2 < (y + 50)))){
-            elem.style.background = generateColorCode();
+            if(!touching) {
+                elem.style.background = generateColorCode();
+                touching = true;
+            }
+        }
+        else{
+            touching = false;
         }
     }
 
